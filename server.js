@@ -8,6 +8,8 @@ const mongoose = require("mongoose");
 const articleRoutes = require("./routes/article.route");
 const presentationRoutes = require("./routes/presentation.route");
 const requestLogger = require("./middleware/requestLogger");
+const messageEmitter = require("./event");
+
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
@@ -31,6 +33,6 @@ app.get("/", (req, res) => {
 
 app.listen(process.env.PORT, () => {
   writeLog("server2.log",`Server is running on port ${process.env.PORT}`);
-    
+  messageEmitter.emit("message_call", 'Serveur');
   console.log(`Server is running on port ${process.env.PORT}`);
 });
