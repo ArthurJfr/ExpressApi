@@ -3,3 +3,4 @@
 /server2.log
 /requests.log
 /.env
+/package-lock.json
