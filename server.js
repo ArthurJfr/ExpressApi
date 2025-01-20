@@ -9,7 +9,8 @@ const articleRoutes = require("./routes/article.route");
 const presentationRoutes = require("./routes/presentation.route");
 const requestLogger = require("./middleware/requestLogger");
 const messageEmitter = require("./event");
-
+const invoiceRoutes = require('./routes/invoice.route');
+require('./events/invoiceHandler');
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
@@ -21,6 +22,7 @@ mongoose.connection.on("connected", () => {
 });
 
 app.use(bodyParser.json());
+app.use('/invoices', invoiceRoutes);
 
 app.use(requestLogger);
 

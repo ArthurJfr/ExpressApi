@@ -4,3 +4,4 @@
 /requests.log
 /.env
 /package-lock.json
+*.pdf
