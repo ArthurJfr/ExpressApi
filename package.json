@@ -19,6 +19,7 @@
     "express": "^4.21.2",
     "fs": "^0.0.1-security",
     "helmet": "^8.0.0",
+    "ioredis": "^5.4.2",
     "mongoose": "^8.9.5",
     "nodemailer": "^6.9.0",
     "pdfkit": "^0.16.0",

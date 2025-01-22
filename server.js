@@ -17,7 +17,7 @@ const { createLogger, format, transports } = require('winston');
 const DailyRotateFile = require('winston-daily-rotate-file');
 const logger = require('./config/logger');
 const helmet = require('helmet');
-
+const redis = require('ioredis');
 // correction sur https://gitlab.com/theodac/3bcinodelinux.git
 
 
@@ -64,6 +64,12 @@ app.get('/test-error', (req, res) => {
     logger.error('Erreur critique de test:', error);
     res.status(500).send('Erreur générée avec succès');
   }
+});
+redis.on('connect', () => {
+  console.log('Connected to Redis');
+});
+redis.on('error', (error) => {
+  console.error('Erreur Redis:', error);
 });
 app.listen(process.env.PORT, () => {
   writeLog("server2.log",`Server is running on port ${process.env.PORT}`);
