@@ -21,14 +21,14 @@ const helmet = require('helmet');
 // correction sur https://gitlab.com/theodac/3bcinodelinux.git
 
 
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// mongoose.connect(process.env.MONGO_URI, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
-mongoose.connection.on("connected", () => {
-  console.log("Connected to MongoDB");
-});
+// mongoose.connection.on("connected", () => {
+//   console.log("Connected to MongoDB");
+// });
 
 app.use(bodyParser.json());
 app.use(cors({
