@@ -17,7 +17,8 @@ const { createLogger, format, transports } = require('winston');
 const DailyRotateFile = require('winston-daily-rotate-file');
 const logger = require('./config/logger');
 const helmet = require('helmet');
-const redis = require('ioredis');
+const Redis = require('ioredis');
+const redis = new Redis();
 // correction sur https://gitlab.com/theodac/3bcinodelinux.git
 
 
