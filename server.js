@@ -29,7 +29,12 @@ const redis = require('ioredis');
 // mongoose.connection.on("connected", () => {
 //   console.log("Connected to MongoDB");
 // });
-
+redis.on('connect', () => {
+  console.log('Connected to Redis');
+});
+redis.on('error', (error) => {
+  console.error('Erreur Redis:', error);
+});
 app.use(bodyParser.json());
 app.use(cors({
   origin: 'http://localhost:3000',
@@ -65,12 +70,7 @@ app.get('/test-error', (req, res) => {
     res.status(500).send('Erreur générée avec succès');
   }
 });
-redis.on('connect', () => {
-  console.log('Connected to Redis');
-});
-redis.on('error', (error) => {
-  console.error('Erreur Redis:', error);
-});
+
 app.listen(process.env.PORT, () => {
   writeLog("server2.log",`Server is running on port ${process.env.PORT}`);
   messageEmitter.emit("message_call", 'Serveur');
